@@ -75,9 +75,21 @@ To switch the driver focus from the Frame to the Main Page, switch to default co
 
 	driver.switch_to.default_content()
 
-Otherwise, I get the _NoSuchElementException_ error message. I don't get any errors related to the 1st frame. I successfully switch to the 1st frame and perform the action. I get this error on the 2nd frame, if I don't switch the driver focus from the 1st frame to default content (main page). After the last 3rd action in the last 3rd frame, there's no need to switch back to default content.
+Otherwise, I get the _NoSuchElementException_ error message. I don't get any errors related to the 1st frame. I successfully switch to the 1st frame and perform the action. I get this error on the 2nd frame, if I don't switch the driver focus from the 1st frame to default content (main page). After the last action in the last (3rd) frame, there's no need to switch back to default content.
 
-Sometimes, I run into an __Inner Frame__, which is frame within a frame. And that frame contains elements. I switch to the Outer Frame, then switch to the Inner Frame, and then interact with an element. Here, I don't have to deal with the default content. The previous Example exhibits 3 Frames that are completely independent. Default content is required because there are multiple frames to navigate to.
+![image](https://user-images.githubusercontent.com/70295997/206811609-94b60a84-7d22-474c-a428-5dcdbaa24728.png)
+
+The Example exhibits 3 Frames that are completely independent. Default content is required because there are multiple frames to navigate to.
+
+__Inner Frame__
+
+Sometimes, I run into an __Inner Frame__, which is frame within a frame. And that frame contains elements. I switch to the Outer Frame, then switch to the Inner Frame, and then interact with an element. Here, I don't have to deal with the default content. 
+
+![image](https://user-images.githubusercontent.com/70295997/206811666-f8e01b0e-f0ae-4256-8bb9-16fc9525fc2c.png)
+
+
+
+
 
 
 	
