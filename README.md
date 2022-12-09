@@ -29,3 +29,22 @@ __iFrames__ and __Frames__ are similar. The small difference is that when workin
 Why do I need to work with Frames? The reason is that if there are any elements present inside the Frame, I cannot directly interact with it. I cannot do any validations on those elements because those element are present inside the Frame. And that Frame is a customized Form, which is displayed from another 3rd party web page.
 
 To be able to interact with the elements that are present inside a Frame/iFrame, I need to _.switch_to()_ that particular frame first. In my Example, I have 3 different frames. Although the frames in a web page are distinctly different, internally they are integrated/connected.
+
+I have one page that is split into 3 sections/iFrames:
+	1) Frame # 1 - Packages
+	2) Frame # 2 - All Classes
+	3) Frame # 3 - Links & Info
+
+
+_Requirement:_ Perform operations on the frame. Click on the 1st link in the Packages Frame. Then click on the 'WebDriver' link from the 2nd Frame. Finally, click on the 'HELP' menu in the 3rd Frame.
+
+I cannot directly perfrom these activities. There are 3 elements I need to interact with. The 1st element is a link in the Packages Frame. The 2nd element is the 'WebDriver'link in the 2nd Frame. The 3rd element is the HELP menu, which is present inside the 3rd Frame. These 3 elements are present in 3 different frames. I cannot directly interact with these elements. Before that, I need to switch to that particular frame, perform an action, go to the next frame, do an action, and then switch to the 3rd and last frame and perform an action in it.
+
+Need to switch from one frame to another. If I try to perfom an action directly, I get the __NoSuchElementException__ error.
+
+As soon as I open the web page, the driver is focused on the entire page. Now I want to interact with the 1st element present in the 1st frame. In order to perform any activity in the a frame, I need to switch to it. I use the Selenium 4 command _.switch_to.frame()_:
+
+	driver.switch_to.frame(" ")
+
+I specify the the Name or ID of the frame, or pass the frame as a web element.
+
