@@ -23,7 +23,9 @@ In Selenium 3, I used the switch_to_frame() method. In Selenium 4, I use the fol
 	
 Terms like _frame_, _iframe_, _form_, _inner frame_ are used.
 
-__iFrames__ and __Frames__ are similar. The small difference is that when working on a Windows application, I use terminology __Frame__. When working with web apps, I normally call them __Frames__.
+__iFrames__ and __Frames__ are similar. The small difference is that when working on a Windows application, I use terminology __Frame__. When working with web apps, I normally call them __iFrames__.
 
 
 Why do I need to work with Frames? The reason is that if there are any elements present inside the Frame, I cannot directly interact with it. I cannot do any validations on those elements because those element are present inside the Frame. And that Frame is a customized Form, which is displayed from another 3rd party web page.
+
+To be able to interact with the elements that are present inside a Frame/iFrame, I need to _.switch_to()_ that particular frame first. In my Example, I have 3 different frames. Although the frames in a web page are distinctly different, internally they are integrated/connected.
