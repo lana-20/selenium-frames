@@ -31,10 +31,10 @@ Why do I need to work with Frames? The reason is that if there are any elements 
 To be able to interact with the elements that are present inside a Frame/iFrame, I need to _.switch_to()_ that particular frame first. In my Example, I have 3 different frames. Although the frames in a web page are distinctly different, internally they are integrated/connected.
 
 I have one page that is split into 3 sections/iFrames:
-	1) Frame # 1 - Packages
-	2) Frame # 2 - All Classes
-	3) Frame # 3 - Links & Info
 
+1) Frame # 1 - Packages
+2) Frame # 2 - All Classes
+3) Frame # 3 - Links & Info
 
 _Requirement:_ Perform operations on the frame. Click on the 1st link in the Packages Frame. Then click on the 'WebDriver' link from the 2nd Frame. Finally, click on the 'HELP' menu in the 3rd Frame.
 
@@ -48,3 +48,36 @@ As soon as I open the web page, the driver is focused on the entire page. Now I 
 
 I specify the the Name or ID of the frame, or pass the frame as a web element.
 
+First of all, I check if that particular frame has the _name_ attribute or not. I can use HTML tagnames _frame_, _iframe_, or _form_. If the frame tag contains the _name_ attribute, I don'e even need a locator. I can directly specify that _name_ in double quotes inside the _.switch_to_ method. No locator or _.find_element()_ method needed.
+
+Switch to the 1st frame:
+
+	driver.swtich_to.frame("packageListFrame")
+	
+And then perform the _.click()_ action on the element wihin the 1st frame:
+
+	driver.find_element(By.LINK_TEXT, "org.openqa.selenium").click()
+
+I repeat the steps for the next 2 commands. Before performing the next action, I switch to the 2nd frame:
+
+	driver.switch_to.frame("packageFrame")
+
+And then perform the action:
+
+	driver.find_element(By.LINK_TEXT, "WebDriver").click()
+	
+Similarily, with the 3rd action, perform action _after_ switching to the 3rd frame:
+
+	driver.switch_to.frame("classFrame")
+	driver.find_element(By.XPATH, "abc").click()
+	
+To switch the driver focus from the Frame to the Main Page, switch to default content:
+
+	driver.switch_to.default_content()
+
+Otherwise, I get the _NoSuchElementException_ error message. I don't get any errors related to the 1st frame. I successfully switch to the 1st frame and perform the action. I get this error on the 2nd frame, if I don't switch the driver focus from the 1st frame to default content (main page). After the last 3rd action in the last 3rd frame, there's no need to switch back to default content.
+
+Sometimes, I run into an __Inner Frame__, which is frame within a frame. And that frame contains elements. I switch to the Outer Frame, then switch to the Inner Frame, and then interact with an element. Here, I don't have to deal with the default content. The previous Example exhibits 3 Frames that are completely independent. Default content is required because there are multiple frames to navigate to.
+
+
+	
