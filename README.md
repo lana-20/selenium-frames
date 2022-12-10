@@ -102,6 +102,16 @@ Identify the Outer Frame as a Web Element (when the frame has no ID or Name):
 4. Pass it to the _switch_to_ command as a web element.
 
 
+After switching the driver focus to the Outer/Parent Frame, I need to go to the Inner/Chld Frame. _.default_content()_ is not required, since inner_frame is inside the outer_frame. Switch the driver focus to the Inner Frame with the _switch_to_ command. Then identify the text box element and _.send_keys()_ to it.
+
+I don't have anything inside outer_frame, except for the inner_frame. Now, that I've interacted with the input box element inside the inner_frame, there's no point navigating outward to outer_frame. There's nothing in it. By using _.default_content()_ I can go directly to the Web Page, but not directly to the Outer/Parent Frame.
+
+However, Selenium 4 introduced a command that lets me go directly into the Parent Frame (from the Inner Frame). Suppose the outer_frame has some other inner elements. If I want to perform any actions there, I switch to the Parent Frame:
+
+	driver.switch_to.parent_frame()
+
+No need to pass anything into the _.parent_frame()_ command. It goes directly to the Parent Frame, because there is only one parent element.
+
 
 
 
