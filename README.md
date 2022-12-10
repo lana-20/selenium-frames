@@ -50,6 +50,8 @@ I specify the the Name or ID of the frame, or pass the frame as a web element.
 
 First of all, I check if that particular frame has the _name_ attribute or not. I can use HTML tagnames _frame_, _iframe_, or _form_. If the frame tag contains the _name_ attribute, I don'e even need a locator. I can directly specify that _name_ in double quotes inside the _.switch_to_ method. No locator or _.find_element()_ method needed.
 
+![image](https://user-images.githubusercontent.com/70295997/206818079-188fc9f0-5952-4e0e-b949-5005f50ec6b4.png)
+
 Switch to the 1st frame:
 
 	driver.swtich_to.frame("packageListFrame")
